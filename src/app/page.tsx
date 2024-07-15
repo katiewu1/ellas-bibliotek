@@ -4,10 +4,10 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
+      <div className={styles.action}>
         <p>
-          Lägg till bok >>&nbsp;
-          <a href="/" className={styles.code}><code>klicka här</code></a>
+          Lägg till bok&nbsp;&nbsp;>>&nbsp;&nbsp;
+          <a href="/" className={styles.link}>klicka här</a>
         </p>
         <div>
           <a
