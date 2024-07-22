@@ -1,0 +1,43 @@
+.list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.letter {
+    font-size: 30px;
+    padding: 5px 10px 0px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.letterActive {
+    background: rgba(var(--card-rgb), 0.1);
+    color: #FFCD82;
+}
+
+.pipe {
+    opacity: 0.3;
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+    .letter:hover {
+      background: rgba(var(--card-rgb), 0.1);
+      color: #FFCD82;
+    }
+}
+  
+/* Mobile */
+@media (max-width: 700px) {
+    .letter {
+       /*font-size: 20px;*/
+    }
+}
+  
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+    .letter {
+        /*font-size: 24px;*/
+    }
+}
