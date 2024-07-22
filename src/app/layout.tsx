@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Chilanka } from "next/font/google";
 import { Providers } from "./providers";
-import NextNProgress from "nextjs-progressbar";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
