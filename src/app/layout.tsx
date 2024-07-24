@@ -4,8 +4,8 @@ import { Providers } from "./providers";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
-const chilanka = Chilanka({ 
-  weight: '400',
+const chilanka = Chilanka({
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -21,11 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-        <body className={chilanka.className}>
-          <Providers>
-            {children}
-          </Providers>
-          </body>
+      <body className={chilanka.className}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

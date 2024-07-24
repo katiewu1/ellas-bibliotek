@@ -38,6 +38,13 @@
   padding: 32px;
 }
 
+.message {
+  font-size: 20px;
+  padding: 32px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
 /* Mobile */
 @media (max-width: 700px) {
   .content {
@@ -93,7 +100,6 @@
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
-
 }
 
 @media (prefers-color-scheme: dark) {

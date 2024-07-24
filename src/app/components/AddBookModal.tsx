@@ -1,35 +1,32 @@
 import {
-  Modal, 
-  ModalContent, 
-  ModalHeader, 
-  ModalBody, 
-  ModalFooter, 
-  useDisclosure
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
 } from "@nextui-org/modal";
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 
 export default function AddBookModal(props: any) {
-
-  const {isOpen, onOpen, onOpenChange} = useDisclosure()
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <>
       <p>
-      Lägg till bok&nbsp;&nbsp;&gt;&gt;&nbsp;&nbsp;
-      <Button onPress={onOpen} variant="flat" color="danger">
-        Klicka här
-      </Button>
+        Lägg till bok&nbsp;&nbsp;&gt;&gt;&nbsp;&nbsp;
+        <Button onPress={onOpen} variant="flat" color="danger">
+          Klicka här
+        </Button>
       </p>
-      <Modal 
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        placement="auto"
-      >
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="auto">
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Lägg till bok</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">
+                Lägg till bok
+              </ModalHeader>
               <ModalBody>
                 <Input
                   autoFocus
@@ -50,6 +47,6 @@ export default function AddBookModal(props: any) {
           )}
         </ModalContent>
       </Modal>
-  </>
-  )
+    </>
+  );
 }

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -8,26 +8,40 @@ import ListOfBooks from "./components/ListOfBooks";
 import AddBookModal from "./components/AddBookModal";
 
 export default function Home() {
+  const [listOfBooks, setListOfBooks] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+  const [filterLetter, setFilterLetter] = useState("");
 
-  const [listOfBooks, setListOfBooks] = useState([])
-  const [filterLetter, setFilterLetter] = useState("")
-  
   useEffect(() => {
-    fetch('https://ellas-bibliotek-api.newmetadev.workers.dev/list')
+    fetch("https://ellas-bibliotek-api.newmetadev.workers.dev/list")
       .then((res) => res.json())
       .then((data) => {
-        setListOfBooks(data)
-      })
-  }, [])
+        setListOfBooks(data);
+        setLoading(false);
+      });
+  }, []);
+
+  const renderListOfBooks = () => {
+    if (listOfBooks.length > 0) {
+      return (
+        <ListOfBooks
+          list={listOfBooks.filter((book) =>
+            book.title.toLowerCase().startsWith(filterLetter)
+          )}
+          letter={filterLetter}
+        />
+      );
+    } else {
+      return <p className={styles.message}>Inga böcker hittades</p>;
+    }
+  };
 
   return (
     <main className={styles.main}>
       <div className={styles.action}>
         <AddBookModal />
         <div>
-          <a
-            href="/"
-          >
+          <a href="/">
             <Image
               src="/eb-logo.svg"
               alt="Ella's bibliotek Logo"
@@ -41,9 +55,15 @@ export default function Home() {
       </div>
 
       <div className={styles.center}>
-        <ListOfAlphabet onSelectLetter={setFilterLetter}/>
+        <ListOfAlphabet onSelectLetter={setFilterLetter} />
       </div>
-      <ListOfBooks list={listOfBooks.filter((book) => book.title.toLowerCase().startsWith(filterLetter))} />
+      <div>
+        {isLoading ? (
+          <p className={styles.message}>Laddar...</p>
+        ) : (
+          renderListOfBooks()
+        )}
+      </div>
     </main>
   );
 }
