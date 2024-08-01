@@ -14,23 +14,29 @@ import styles from "./css/AddBookModal.module.css";
 export default function AddBookModal(props: any) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [value, setValue] = useState("");
-  const [bookData, setBookData] = useState({});
+  const [bookData, setBookData] = useState<{
+    title: string;
+    image: string;
+  } | null>(null);
 
   function addBook(url: string) {
     if (url === "") return;
-    else {
-      fetch("https://ellas-bibliotek-api.newmetadev.workers.dev/add", {
-        method: "POST",
-        body: JSON.stringify({
-          url: url,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (Object.keys(bookData).length !== 0) setBookData({});
-          else setBookData(data);
-        });
+    if (bookData !== null) {
+      setBookData(null);
+      setValue("");
+      return;
     }
+
+    fetch("https://ellas-bibliotek-api.newmetadev.workers.dev/add", {
+      method: "POST",
+      body: JSON.stringify({
+        url: url,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setBookData(data);
+      });
   }
 
   return (
@@ -49,7 +55,7 @@ export default function AddBookModal(props: any) {
                 Lägg till bok
               </ModalHeader>
               <ModalBody>
-                {Object.keys(bookData).length === 0 ? (
+                {bookData === null ? (
                   <Input
                     autoFocus
                     isClearable
@@ -85,9 +91,7 @@ export default function AddBookModal(props: any) {
                   isDisabled={value === ""}
                   onPress={() => addBook(value)}
                 >
-                  {Object.keys(bookData).length === 0
-                    ? "Lägg till"
-                    : "Lägg till ny bok"}
+                  {bookData === null ? "Lägg till" : "Lägg till ny bok"}
                 </Button>
               </ModalFooter>
             </>
