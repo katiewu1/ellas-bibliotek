@@ -25,7 +25,7 @@ export default function Home() {
     if (listOfBooks.length > 0) {
       return (
         <ListOfBooks
-          list={listOfBooks.filter((book) =>
+          list={listOfBooks.filter((book: any) =>
             book.title.toLowerCase().startsWith(filterLetter)
           )}
           letter={filterLetter}
