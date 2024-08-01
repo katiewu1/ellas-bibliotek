@@ -43,7 +43,7 @@ export default function AddBookModal(props: any) {
     <>
       <p>
         Lägg till bok&nbsp;&nbsp;&gt;&gt;&nbsp;&nbsp;
-        <Button onClick={onOpen} variant="flat" color="danger">
+        <Button onClick={onOpen} variant="solid" color="secondary">
           Klicka här
         </Button>
       </p>

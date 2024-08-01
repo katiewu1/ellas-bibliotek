@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import ListOfAlphabet from "./components/ListOfAlphabet";
 import ListOfBooks from "./components/ListOfBooks";
 import AddBookModal from "./components/AddBookModal";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function Home() {
   const [listOfBooks, setListOfBooks] = useState([]);
@@ -54,6 +55,7 @@ export default function Home() {
         </div>
       </div>
 
+      <ThemeSwitcher />
       <div className={styles.center}>
         <ListOfAlphabet onSelectLetter={setFilterLetter} />
       </div>
