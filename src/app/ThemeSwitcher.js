@@ -24,7 +24,7 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <div>
+    <div className="self-end mr-12">
       <Switch
         defaultSelected
         size="lg"
