@@ -54,7 +54,7 @@ export default function Home() {
           </a>
         </div>
       </div>
-
+      <br />
       <ThemeSwitcher />
       <div className={styles.center}>
         <ListOfAlphabet onSelectLetter={setFilterLetter} />
