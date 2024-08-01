@@ -1,10 +1,16 @@
 import styles from "./css/ListOfBooks.module.css";
 
+type Book = {
+  title: string;
+  image: string;
+  url: string;
+};
+
 export default function ListOfBooks(props: any) {
   return (
     <div className={props.list.length > 0 ? styles.grid : ""}>
       {props.list.length > 0 ? (
-        props.list.map((book) => (
+        props.list.map((book: Book) => (
           <a
             key={book.title}
             href={book.url}
