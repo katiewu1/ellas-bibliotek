@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description: "Ella's boksamling",
     url: "https://ellas-bibliotek.vercel.app/",
     siteName: "Ella's bibliotek",
-    images: "/eb-logo.svg",
+    images: "/favicon.svg",
   },
 };
 
