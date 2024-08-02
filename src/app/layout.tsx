@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: "Ella's boksamling",
   openGraph: {
     title: "Ella's bibliotek",
-    description: "Ella's boksamling",
+    description: "Välkommen till Ella's boksamling",
     url: "https://ellas-bibliotek.vercel.app/",
     siteName: "Ella's bibliotek",
     images: "/favicon.svg",
