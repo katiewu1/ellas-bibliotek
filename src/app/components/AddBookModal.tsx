@@ -42,9 +42,8 @@ export default function AddBookModal(props: any) {
   return (
     <>
       <p>
-        Lägg till bok&nbsp;&nbsp;&gt;&gt;&nbsp;&nbsp;
         <Button onClick={onOpen} variant="solid" color="secondary">
-          Klicka här
+          Lägg till bok
         </Button>
       </p>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="auto">

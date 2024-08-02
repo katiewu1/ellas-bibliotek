@@ -12,6 +12,13 @@ const chilanka = Chilanka({
 export const metadata: Metadata = {
   title: "Ella's bibliotek",
   description: "Ella's boksamling",
+  openGraph: {
+    title: "Ella's bibliotek",
+    description: "Ella's boksamling",
+    url: "https://ellas-bibliotek.vercel.app/",
+    siteName: "Ella's bibliotek",
+    images: "/eb-logo.svg",
+  },
 };
 
 export default function RootLayout({
