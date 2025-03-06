@@ -28,6 +28,30 @@
   font-size: 18px;
 }
 
+.actionButtons {
+  display: flex;
+  align-items: center;
+}
+
+.actionButtons > div {
+  padding: 1rem;
+}
+
+.headerTitle {
+  font-size: 32px;
+  line-height: 40px;
+  width: 60%;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.headerTitle span {
+  font-style: italic;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 300;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -85,6 +109,10 @@
       rgb(var(--background-end-rgb)) 40%
     );
     z-index: 1;
+  }
+
+  .headerTitle {
+    width: 80%;
   }
 }
 

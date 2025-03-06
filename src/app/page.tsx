@@ -40,7 +40,10 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.action}>
-        <AddBookModal />
+        <div className={styles.actionButtons}>
+          <AddBookModal />
+          <ThemeSwitcher />
+        </div>
         <div>
           <a href="/">
             <Image
@@ -55,7 +58,10 @@ export default function Home() {
         </div>
       </div>
       <br />
-      <ThemeSwitcher />
+      <h1 className={styles.headerTitle}>
+        Välkommen till Ella's bibliotek <br />
+        <span>En samling av böcker som jag har hemma </span>
+      </h1>
       <div className={styles.center}>
         <ListOfAlphabet onSelectLetter={setFilterLetter} />
       </div>

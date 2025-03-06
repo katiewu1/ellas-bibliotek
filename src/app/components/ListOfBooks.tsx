@@ -4,6 +4,7 @@ type Book = {
   title: string;
   image: string;
   url: string;
+  authors: [];
 };
 
 export default function ListOfBooks(props: any) {
@@ -18,8 +19,13 @@ export default function ListOfBooks(props: any) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h3>{book.title}</h3>
+            <h2>{book.title}</h2>
             <img src={book.image} alt="Bild på bokomslag" />
+            <div className={styles.authors}>
+              {book.authors.map((author) => (
+                <p key={author}>{author}</p>
+              ))}
+            </div>
           </a>
         ))
       ) : (
