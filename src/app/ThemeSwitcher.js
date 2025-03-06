@@ -24,16 +24,14 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <div>
-      <Switch
-        defaultSelected
-        size="lg"
-        color="warning"
-        onClick={handleTheme}
-        startContent={<MdOutlineWbSunny />}
-        endContent={<MdOutlineNightlight />}
-      />
-    </div>
+    <Switch
+      defaultSelected
+      size="lg"
+      color="warning"
+      onClick={handleTheme}
+      startContent={<MdOutlineWbSunny />}
+      endContent={<MdOutlineNightlight />}
+    />
   );
 };
 

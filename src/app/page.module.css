@@ -82,14 +82,16 @@
   }
 
   .action p,
-  .action div {
+  .action div,
+  .action label {
     display: flex;
     justify-content: center;
     position: fixed;
     width: 100%;
   }
 
-  .action p {
+  .action p,
+  .action label {
     align-items: center;
     inset: 0 0 auto;
     padding: 2rem 1rem 1.4rem;
@@ -106,7 +108,7 @@
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      rgb(var(--background-end-rgb)) 60%
+      rgb(var(--background-end-rgb)) 50%
     );
     z-index: 1;
   }
