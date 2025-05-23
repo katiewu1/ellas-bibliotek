@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
-import ListOfAlphabet from "./components/ListOfAlphabet";
+import SearchBar from "./components/SearchBar";
 import ListOfBooks from "./components/ListOfBooks";
 import AddBookModal from "./components/AddBookModal";
 import ThemeSwitcher from "./ThemeSwitcher";
@@ -11,7 +11,7 @@ import ThemeSwitcher from "./ThemeSwitcher";
 export default function Home() {
   const [listOfBooks, setListOfBooks] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const [filterLetter, setFilterLetter] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetch("https://ellas-bibliotek-api.newmetadev.workers.dev/list")
@@ -23,18 +23,26 @@ export default function Home() {
   }, []);
 
   const renderListOfBooks = () => {
-    if (listOfBooks.length > 0) {
-      return (
-        <ListOfBooks
-          list={listOfBooks.filter((book: any) =>
-            book.title.toLowerCase().startsWith(filterLetter)
-          )}
-          letter={filterLetter}
-        />
-      );
-    } else {
-      return <p className={styles.message}>Inga böcker hittades</p>;
-    }
+    const query = searchQuery.toLowerCase().trim();
+
+    const filteredBooks = query
+      ? listOfBooks.filter((book: any) => {
+          const titleMatch = book.title.toLowerCase().includes(query);
+          const authorMatch = Array.isArray(book.authors)
+            ? book.authors.some((author: string) =>
+                author.toLowerCase().includes(query)
+              )
+            : false;
+
+          return titleMatch || authorMatch;
+        })
+      : listOfBooks;
+
+    return filteredBooks.length > 0 ? (
+      <ListOfBooks list={filteredBooks} query={searchQuery} />
+    ) : (
+      <p className={styles.message}>Inga böcker hittades</p>
+    );
   };
 
   return (
@@ -63,7 +71,7 @@ export default function Home() {
         <span>En samling av böcker som jag har hemma </span>
       </h1>
       <div className={styles.center}>
-        <ListOfAlphabet onSelectLetter={setFilterLetter} />
+        <SearchBar onSearch={setSearchQuery} />
       </div>
       <div>
         {isLoading ? (

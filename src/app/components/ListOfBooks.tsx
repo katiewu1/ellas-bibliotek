@@ -4,14 +4,19 @@ type Book = {
   title: string;
   image: string;
   url: string;
-  authors: [];
+  authors: string[];
 };
 
-export default function ListOfBooks(props: any) {
+type Props = {
+  list: Book[];
+  query: string;
+};
+
+export default function ListOfBooks({ list, query }: Props) {
   return (
-    <div className={props.list.length > 0 ? styles.grid : ""}>
-      {props.list.length > 0 ? (
-        props.list.map((book: Book) => (
+    <div className={list.length > 0 ? styles.grid : ""}>
+      {list.length > 0 ? (
+        list.map((book) => (
           <a
             key={book.title}
             href={book.url}
@@ -22,16 +27,18 @@ export default function ListOfBooks(props: any) {
             <h2>{book.title}</h2>
             <img src={book.image} alt="Bild på bokomslag" />
             <div className={styles.authors}>
-              {book.authors.map((author) => (
-                <p key={author}>{author}</p>
-              ))}
+              {Array.isArray(book.authors) && book.authors.length > 0 ? (
+                book.authors.map((author) => <p key={author}>{author}</p>)
+              ) : (
+                <p>Okänd författare</p>
+              )}
             </div>
           </a>
         ))
       ) : (
         <p className={styles.message}>
-          Inga böcker hittades som börjar med bokstav{" "}
-          {props.letter.toUpperCase()}
+          Inga böcker hittades
+          {query ? ` som matchar "${query}"` : ""}
         </p>
       )}
     </div>
